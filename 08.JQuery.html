@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <h1 id="Main">Hello World!</h1>
+
+</head>
+
+<body>
+
+    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+
+    <script>
+        var friends = ["Panos", "John", "Elizabeth"];
+
+        var friendAppend = function() {
+            for (var x = 0; x < friends.length; x++) {
+            $("body").append("<p>" + friends[x] + "</p>");
+            }
+        }
+        var smell = function() {
+            $("p").append(" smells!");
+        }
+
+        function headChange() {
+            $("#Main").text("My FriendsList:"); //a direct way to write the function WITHOUT (=) THE EQUATION SYMBOL!
+        }
+        setTimeout(headChange, 2000);
+        setTimeout(friendAppend, 5000);
+        setTimeout(smell, 8000);
+        var smellPrint = setInterval(smell, 10000);
+        //clearInterval(smellPrint); //stops the repetition of setInterval because it clears the value of smellPrint.
+
+
+        var leftOffset = 0;
+        var movingHead = function() {
+            $("#Main").offset({
+                left: leftOffset
+            });
+            leftOffset++
+            if (leftOffset > 200) {
+                leftOffset = 0;
+            }
+        };
+
+        setInterval(movingHead, 30);
+    </script>
+
+
+
+
+
+
+</body>
+
+
+</html>

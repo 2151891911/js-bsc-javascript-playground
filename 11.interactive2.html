@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Interactive Programming 2.</title>
+
+</head>
+
+<body>
+    <h1 id="heading">"Hello World"</h1>
+
+    <script src="https://code.jquery.com/jquery-2.1.0.js">
+    </script>
+
+    <script>
+        var moveLeft = 0;
+        var moveHeading = function() {
+            $("#heading").offset({ // edo exoume mia nea function thn ".offset" pou apeuthinetai se ena object
+                left: moveLeft
+            });
+
+            //({location: increasement}) in other words ({left: integer+++++})
+            moveLeft = moveLeft + 1;
+            //moveLeft++; // if we wish to double the movement we make another sentence
+
+            if (moveLeft > 200) {
+                moveLeft = 200;
+            } // condition set to stop
+        };
+
+        setInterval(moveHeading, 30); // a JQuerry looping function (func, time-milliseconds = times/sec)
+    </script>
+
+
+</body>
+
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Lets Manipulate some objects</title>
+</head>
+
+<body>
+    <h1 id="heading">Animal Generators!</h1>
+
+    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+
+
+    <script>
+        var dog = {
+            name: "Jacky",
+            legs: 4,
+            isAwesome: true,
+            bark: function() {
+                document.write("<br> Woof Woof"); // a function inside an object --> better organisation of code!
+            }
+        };
+
+        var cat = {
+            name: "Jonas",
+            legs: 4,
+            isAwesome: true,
+            bark: function() {
+                document.write("<br> mew Mewww");
+            }
+        };
+
+        dog.bark();
+        this.bark(); // we would REPLACE the object name with the keyword "this".
+        var speak = function() {
+            document.write(this.bark()); // so the speak function would work for any object that has the property bark!!
+
+        }
+
+
+        // lets see a constructor. The constructor's name is written in capital first!
+
+        var Car = function(x, y) {
+            this.x = x; //kkeyword "this" is used here because many objects are going to use the constructor function
+            this.y = y;
+        };
+
+        //afterwards we write:
+        var testla = new Car(100, 20);
+
+        // the testla is a new variable that is also a new object which follows the car constuctor-properties
+
+        // if we ask js about testla; then we will get: 
+        // car {x:100, y:20} --> that tesla is a car object created by the car-constructor with properties after the constructor's structure!
+    </script>
+
+
+
+
+
+</body>
+
+
+</html>

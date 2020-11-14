@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hungman!</title>
+</head>
+
+<body>
+    <h1>Hungman!</h1>
+
+    <script>
+        //create an array of words
+        var words = ["javascript", "monkey", "amazing", "pancake"];
+        //words.push(prompt("insert a Word of your own!")); // lets the user to insert a word of their own
+        //words[words.length - 1].toLowerCase; // converts the user's word to lowercase, just in case...
+        //pick a random word
+        var word = words[Math.floor(Math.random() * words.length)];
+
+        //set up the answer array. It generates '_' characters for the word length!
+        var answerArray = [];
+
+        for (var i = 0; i < word.length; i++) {
+            answerArray[i] = "_";
+
+        } //loop until word letters are end.
+
+        var remainingLetters = word.length;
+        var guessNo = 4;
+
+        /*something to end the loop without revealing the word. This is done with the 'return' function.
+               the game loop. 
+               
+               Everyhting is INSIDE the 'while' loop!!!!While is a very general statement!
+               while and for are the two main LOOPING METHODS
+               */
+        while (remainingLetters > 0 && guessNo > 0) { // does something again and again the while loop!
+            alert(answerArray.join(" ") + "     Timer = " + guessNo + "    Remaining Letters = " + remainingLetters);
+
+            //Get a guess from the player that executes again and again
+            var guess = prompt("Guess a letter, or click Cancel to stop playing.");
+
+            if (guess === null) {
+                break;
+            } else if (guess.length !== 1) {
+                alert("Please enter a single letter.");
+            } else {
+                if (word.indexOf(guess.toLowerCase()) < 0) {
+                    guessNo--;
+                }
+                /* 
+                
+                this checks if the guess is inside the INDEX of the word!!!
+                if not --> the guesses are reduced to -1.
+                We run this before the for loop otherwise the guessNo reduction
+                will be massive and <0!! 
+                Notice how we are in an final else statement, just having an if statement
+                followed by a for loop
+                
+                */
+
+                for (var j = 0; j < word.length; j++) {
+                    if (word[j] === guess.toLowerCase() && answerArray[j] === "_") {
+                        answerArray[j] = guess.toLowerCase();
+                        remainingLetters--;
+                    }
+                }
+            }
+        }
+        // the end of the game loop
+        if (guessNo === 0) {
+            alert("You are HANGED!");
+            alert("GAME OVER!");
+        } else if (guess === null) {
+            alert("Thanks for playing!");
+        } else {
+            alert(answerArray.join(" "));
+            alert("Good job! The answer was " + word);
+        }
+    </script>
+
+</body>
+
+</html>

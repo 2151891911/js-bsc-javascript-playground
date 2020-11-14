@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Interactive Programming 2.</title>
+
+</head>
+
+<body>
+    <h1 id="heading">"Hello World"</h1>
+
+    <script src="https://code.jquery.com/jquery-2.1.0.js">
+    </script>
+
+    <script>
+        var clickEvent = function(event) { // the "event" is a keyword of jQuery.
+            console.log("click! " + event.pageX + " " + event.pageY);
+        }
+
+        $("html").click(clickEvent);
+
+
+        /*
+we have two methods here:
+1. (var/arg).pageX or (var/arg).pageY for finding the coordinates of the click. these outputs are numbers
+
+2. object.click(function) // the "h1" is considered as an HTML object! (DOM document object)
+
+        */
+    </script>
+
+
+</body>
+
+
+</html>

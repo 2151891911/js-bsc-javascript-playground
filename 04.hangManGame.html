@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hungman!</title>
+</head>
+
+<body>
+    <h1>Hungman!</h1>
+
+    <script>
+        //create an array of words
+        var words = ["javascript", "monkey", "amazing", "pancake"];
+
+        //pick a random word
+        var word = words[Math.floor(Math.random() * words.length)];
+
+        /* set up the answer array. An one time only process. The loop ends as soon as the
+        world length ends. This sets the "_" characters.
+        */
+
+        var answerArray = [];
+
+        for (var i = 0; i < word.length; i++) {
+            answerArray[i] = "_";
+        }
+
+        /* The game loop. This condition is valid for all the time up-untill!! remaining letters
+        are zero. It is a general loop and this is why EVERYTHING IS INSIDE THE WHILE LOOP
+        
+        Also, it just joins the answerArray! answerArray value is set up in the beginning and
+        is constantly updated in the 'guess' code block
+        */
+
+        var remainingLetters = word.length;
+        var end = function() {
+            return alert("Thanks for playing");
+        };
+        while (remainingLetters > 0) { // the loop condition
+            alert(answerArray.join(" ")) // show the player their progress
+
+            //Get a GUESS from the player
+            var guess = prompt("Guess a letter, or click Cancel to stop playing.");
+
+            if (guess === null) {
+                end();
+            } else if (guess.length !== 1) {
+                alert("Please enter a single letter.");
+            } else { // update the game state with the guess
+                for (var j = 0; j < word.length; j++) {
+                    if (word[j] === guess) {
+                        answerArray[j] = guess;
+                        remainingLetters--;
+                    }
+                }
+            }
+        }
+        /* When the while loop ends (remainingLetters = 0) then the following code will be executed. 
+        This is written AFTERWARDS since everything is executed literally and serially!!
+        */
+        alert(answerArray.join(" ")); //show complete word
+        alert("Good job! The answer was " + word); // congratulation message
+        //---------------------------------------------------------
+    </script>
+
+</body>
+
+
+
+
+</html>

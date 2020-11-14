@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Object Manipulation</title>
+</head>
+
+<body>
+    <h1 id="heading">Car Factory!</h1>
+
+    <h2> Lets Race!</h2>
+
+    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+
+    <script>
+        var runc = function() {
+            return Math.floor(Math.random() * 5);
+        };
+
+        var Car = function(x, y) { // the constructor
+            this.x = x;
+            this.y = y;
+        };
+        // we then pass methods to the constructor function with the "prototype" keyword
+        Car.prototype.draw = function() {
+            var carHtml = '<img src = "http://nostarch.com/images/car.png">';
+            //find image from internet and store to var. the sorage is in HTML terms!!!!!
+
+            this.carElement = $(carHtml); //find and take that stored data! This is stored as an object property!!!
+            // we define the name of the new property as "carElement" we attach it to the object with "this"
+            //and we assign it a value of HTML
+
+            //apparently the .css method works only on HTML!! this is the reason we transform the var!! 
+            this.carElement.css({ //fix an object upon the document with certain properties
+                position: "absolute",
+                left: this.x, // sososos we replaced the "car" with "this" keyword!!
+                top: this.y // so we are able to call a property of any factory created object 
+            });
+
+            $("body").append(this.carElement); //place those objects on the document's body!
+        };
+
+        // up untill this point we have only defined the functions and the constructor function
+        //now we will put them into action-->
+
+        //first we let the factory create the cars:
+        var tesla = new Car(50, 100); //construct a NEW OBJECT that is just like car and name it tesla
+        var nissan = new Car(50, 300);
+
+        // we let the objects be seen on the document:
+
+        tesla.draw();
+        nissan.draw();
+
+        //we set the movement of the objects
+
+        Car.prototype.moveRight = function() { // we replaced the function with xyz to move it as much as we like
+            this.x += runc();
+            this.carElement.css({
+                left: this.x,
+                top: this.y
+            });
+        };
+
+        //with the same way we can add methods about moveUp or moveDown.
+        //we can open the console and type tesla.moveRight(10); to move the car 10 pixels right
+        //var.css, var.offsetX var.pageX are all the same way of moving an object.
+        //remember that we used the offsetX and the pageX alongside with "event" for mouse movement
+
+
+        // lets race with setInterval:
+
+
+        function speedTesla() {
+            tesla.moveRight(); // so setInterval() function cannot execute a method of an object. It has to be included in
+            //a function
+            //a function can call a method!
+
+            //if (tesla.offsetX = 50000) {
+            // clearInterval(auto1);
+            //};
+        }
+
+        function speedNissan() {
+            nissan.moveRight();
+        }
+
+        var auto1 = setInterval(speedTesla, 50);
+        var auto2 = setInterval(speedNissan, 50);
+    </script>
+
+</body>
+
+</html>

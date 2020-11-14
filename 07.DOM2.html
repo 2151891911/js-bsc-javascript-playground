@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Playing with the DOM</title>
+
+</head>
+
+<body>
+
+    <h1 id="main-heading">Hello World!</h1>
+
+    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+    <script>
+        var newHeadingText = prompt("Please Provide a New Heading:");
+        $("#main-heading").text(newHeadingText); // we set the new value by finding the document object
+        //$ represents select and it is a method: $(). # represents the ID!!
+        // the text method:text(), is similar to push i.e var array --> array.push();
+        // so $("#...") represents select ID
+        $("body").append("<p>This is is a new paragraph.</p>"); // in other words we say: select the body and add that <p>...
+        // the append() is actually : append(" ... ") and any HTML string code is written inside "". 
+
+        for (var i = 0; i < 3; i++) {
+            var hobby = prompt("Tell me one of your hobbies!");
+            $("body").append("<p>" + hobby + "</p>"); // anything outside HTML or string is written normally i.e. a var!
+        }
+        $("p").fadeOut(3000).fadeIn(3000); // Animation with the use of fadeOut() method in js. It select the <p> element and fades it into 3 seconds
+        $("#main-heading").slideDown(1000).slideUp(1000);
+        //$("p").slideDown(2000).slideUp(2000);
+        //a function is a process that returns an output, and a method is just a process that behaves in a way!
+    </script>
+
+
+</body>
+
+
+</html>

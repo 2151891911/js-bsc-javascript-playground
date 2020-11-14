@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Find the buried treasure!</title>
+</head>
+
+<body>
+    <h1 id="heading">Find the buried Treasure!</h1>
+
+    <img id="map" width=800 height=800 src="https://nostarch.com/images/treasuremap.png">
+
+    <!--Stin image den vazei katholou tag telous dil </img> opos exoun ta alla tags!!!! 
+    mnimonikos kanonas: h ikona exei diarkeia kai den teleionei.
+    
+    -->
+
+    <p id="distance"></p>
+    <!--
+       to afeinei epiteides keno. To mono pou xreiazetai einai na exei tautotita gia na to vrei 
+    -->
+
+    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+
+    <script>
+        function randomNumber(size) { // get random numbers for our random location
+            return Math.floor(Math.random() * size);
+        }
+
+        var width = 800;
+        var height = 800;
+        var clicks = 30;
+
+        var target = { // create a random target location. This is an OBJECT with characteristics of x, y location
+            x: randomNumber(width),
+            y: randomNumber(height)
+        };
+
+        function getDistance(event, target) { // calculate distance between event and click!
+            var diffX = event.pageX - target.x; // target.x --> object calling of a property of that object
+            var diffY = event.pageY - target.y;
+            return Math.sqrt((diffX * diffX) + (diffY * diffY));
+        };
+
+        function getDistanceHint(distance) {
+            if (distance < 10) {
+                return "Boiling Hot!" + " You have " + clicks + " clicks untill end!";
+            } else if (distance < 20) {
+                return "Really Hot!" + " You have " + clicks + " clicks untill end!";
+            } else if (distance < 40) {
+                return "Hot" + " You have " + clicks + " clicks untill end!";
+            } else if (distance < 80) {
+                return "Warm!" + " You have " + clicks + " clicks untill end!";
+            } else if (distance < 160) {
+                return "Cold!" + " You have " + clicks + " clicks untill end!";
+            } else if (distance < 360) {
+                return "Really Cold" + " You have " + clicks + " clicks untill end!";
+            } else {
+                return "Freezing" + " You have " + clicks + " clicks untill end!";
+            }
+        };
+        // logika tha skeftomastan prota to parakato kommati kai meta tha ftiaxname mia function gia to kathena
+
+        $("#map").click(function(event) {
+
+            clicks--; // to count the clicks of the player
+
+            var distance = getDistance(event, target); //get distance between click event and target
+
+            var distanceHint = getDistanceHint(distance); // convert distance to hint
+
+            $("#distance").text(distanceHint); // let the player know the hint
+
+            if (distance < 8) { //if the click was close enough, tell them they have won!
+
+                alert("Found the treasure in " + clicks + " clicks!");
+            } else if (clicks < 0) {
+                return alert("Game Over! The pirates found the treasure First!");
+            }
+        });
+        //
+    </script>
+
+</body>
+
+
+
+</html>

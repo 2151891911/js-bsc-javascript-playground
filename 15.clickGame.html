@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Interactive programming</title>
+</head>
+
+<body>
+    <h1 id="heading">Hello World!</h1>
+
+    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+
+    <script>
+        var direction = 'right'; // o mpousoulas gia allagi kateuthinsis me vrogxous if else
+        var counter = 0; // prosoxi o "counter" exei na kanei sxesi mono me to metrima kai oxi me ti thesi tou object
+
+        // prosoxi: koita pos xrisimopoiei (else) if-->if statements. tin mia mesa sthn alli. kai otan allazei kateuthinsi tote
+        // xrisimopoiei "else if"
+
+        $("#heading").offset({
+            left: counter,
+            top: counter
+        }); // arxikopoiei to antikeimeno -- to topothetei se thesi 0,0 akrivos pano aristera terma sosososs
+
+        var moveHeading = function() {
+            if (direction === 'right') {
+                $("#heading").offset({ // i method "offset" tha paei to object sti thesi pou prepei
+                    left: counter
+                });
+                counter++;
+                if (counter > 200) {
+                    counter = 0; // ara to midenizei giati thelei na kanei auksisi +++
+                    direction = 'down';
+                }
+            } else if (direction === 'down') {
+                $("#heading").offset({
+                    top: counter
+                });
+                counter++;
+                if (counter > 200) {
+                    counter = 200; // gia na arxisei tin meiosi --
+                    direction = 'left';
+                }
+            } else if (direction === 'left') {
+                $("#heading").offset({
+                    left: counter
+                });
+                counter--;
+                if (counter < 0) {
+                    counter = 200; // ksana meiosi thelei na kanei
+                    direction = 'up';
+                }
+            } else if (direction === 'up') {
+                $("#heading").offset({
+                    top: counter
+                });
+                counter--;
+                if (counter < 0) {
+                    counter = 0; // thelei na ksekinisei apo tin arxi
+                    direction = 'right';
+                }
+            }
+        };
+        // mexri edo apla thesame tin function. o interpreter den tha kanei tipota.
+
+
+        var interv = setInterval(moveHeading, 30); // onomazei metavliti kai tin ektelei tautoxrona !!!!
+        // einai se auto to bima pou keteleite i function "moveHeading" me repetition logo tis setInterval();
+
+        //apla to setInterval(); ekteleite kai to id tou apothikeuetai. omos einai mia etoimi function
+        //pou tin kaloume na ektelestei!!! apla to apotelesma tis to apothikeuoume gia metepeita xrisi
+
+        var count1 = 30;
+        var interv2;
+
+        function faster() {
+            if (count1 > 20) {
+                $("#heading").text("Hello World! counter: " + count1);
+                setInterval(moveHeading, count1);
+                count1--;
+                if (count1 === 20) {
+                    $("#heading").text("You have Won! counter: " + count1);
+                    setInterval(moveHeading, 30);
+                };
+            }
+        }
+        $("#heading").click(faster);
+    </script>
+
+</body>
+
+</html>

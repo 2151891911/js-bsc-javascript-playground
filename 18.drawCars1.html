@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Lets Manipulate some objects</title>
+</head>
+
+<body>
+    <h1 id="heading">Car Factory!</h1>
+
+    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+
+    <script>
+        var Car = function(x, y) { // the constructor
+            this.x = x;
+            this.y = y;
+        };
+
+        var drawCar = function(car) {
+            var carHtml = '<img src = "http://nostarch.com/images/car.png">'; //find image from internet and store to var
+
+            var carElement = $(carHtml); //find and take that stored data !!!!!
+
+            carElement.css({ //fix an object upon the document with certain properties
+                position: "absolute",
+                left: car.x,
+                top: car.y
+            });
+
+            $("body").append(carElement); //place those objects on the document's body!
+        };
+
+        // up untill this point we have only defined the functions and the constructor function
+        //now we will put them into action-->
+        var tesla = new Car(20, 20);
+        var nissan = new Car(100, 200);
+
+        drawCar(tesla);
+        drawCar(nissan);
+    </script>
+
+</body>
+
+</html>

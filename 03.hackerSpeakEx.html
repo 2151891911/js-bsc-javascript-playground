@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hacker Speak translator</title>
+
+</head>
+
+<body>
+
+    <h3>
+        <center>Hacker Speak translator</center>
+    </h3>
+
+    <p>This is how your phrase would look like in "hacker speak":</p>
+
+    <script>
+        var phrase = "";
+        var empty = "";
+        phrase = "";
+        empty = "";
+        phrase = prompt("Write your Phrase here:");
+
+        for (var x = 0; x < phrase.length; x++) {
+
+            if (phrase[x] == "a") {
+                empty += "4";
+            } else if (phrase[x] == "e") {
+                empty += "3";
+            } else if (phrase[x] == "o") {
+                empty += "0";
+            } else if (phrase[x] == "i") {
+                empty += "1";
+            } else {
+                empty += phrase[x];
+            }
+
+        };
+        document.write(empty);
+    </script>
+
+
+</body>
+
+</html>

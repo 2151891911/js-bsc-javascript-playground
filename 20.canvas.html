@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Lets Draw!</title>
+</head>
+
+<body>
+    <h1>We are going to create a Canvas</h1>
+    <canvas id="canvas" width="200" height="200"></canvas>
+    <!-- We don use Jquerry to draw on canvas. JQuerry is used for selecting and manipulating objects-->
+    <script>
+        var canvas = document.getElementById("canvas"); // we select the element of the document
+        var ctx = canvas.getContext("2d"); // we get the drawing-context OBJECT for drawing on the canvas!
+        ctx.fillRect(0, 0, 10, 10); // we outline some commands for what to draw!
+    </script>
+</body>
+
+</html>

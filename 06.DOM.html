@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Playing with the DOM</title>
+
+</head>
+
+<body>
+
+    <h1 id="main-heading">Hello World!</h1>
+
+    <script>
+        var headingElement = document.getElementById("main-heading");
+        console.log(headingElement.innerHTML); // it prints the var as shown in the HTML (innerHTML-property)
+        var newHeadingText = prompt("Please Provide a New Heading");
+        headingElement.innerHTML = newHeadingText; // we set the new value by finding the document object
+    </script>
+
+
+</body>
+
+
+</html>
